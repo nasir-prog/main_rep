@@ -363,3 +363,27 @@ n строк с записями вида покупатель товар кол
 Примечание. Обратите внимание на второй тест. Если позиции товаров повторяются, то в итоговый список попадает суммарное количество товара по данной позиции.'''
 
 
+dct = {}
+for i in range(int(input())):
+    k, v, r = input().split()
+    if k in dct.keys():
+        if v not in dct[k]:
+            t = dct.get(k)
+            t.update({v: r})
+            dct[k] = t
+        else:
+            t = dct.get(k)
+            temp = int(dct.get(k).get(v)) + int(r)
+            t.update({v: temp})
+            dct[k] = t
+    else:
+        dct[k] = {v: r}
+#print(dct)
+for j in sorted(dct):
+    print(j+':')
+    for q in sorted(dct[j]):
+        print(q, dct[j][q])
+
+
+
+
